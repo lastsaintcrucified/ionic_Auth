@@ -1,0 +1,6 @@
+{
+	"appId": "io.ionic.starter",
+	"appName": "iAuth",
+	"webDir": "www",
+	"bundledWebRuntime": false
+}
