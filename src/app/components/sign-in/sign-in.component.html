@@ -1,67 +1,72 @@
-<ion-grid class="displayTable">
-  <div class="displayTableCell">
-    <ion-column class="authBlock">
-      <h3>Sign In</h3>
-      <div class="formGroup">
-        <input
-          type="text"
-          class="formControl"
-          placeholder="Username"
-          #userName
-          required
-        />
-      </div>
+<ion-grid>
+  <ion-card>
+    <ion-card-header><ion-card-title>Sign In</ion-card-title></ion-card-header>
+    <ion-column>
+      <ion-card-content class="formGroup">
+        <ion-item>
+          <ion-input
+            type="text"
+            placeholder="Username"
+            #userName
+            required
+          ></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input
+            type="password"
+            placeholder="Password"
+            #userPassword
+            required
+          ></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-button
+            size="small"
+            (click)="authService.SignIn(userName.value, userPassword.value)"
+            >Login</ion-button
+          >
+        </ion-item>
+        <!-- Calling SignIn Api from AuthService -->
 
-      <div class="formGroup">
-        <input
-          type="password"
-          class="formControl"
-          placeholder="Password"
-          #userPassword
-          required
-        />
-      </div>
+        <div class="formGroup">
+          <ion-text class="or"><span class="orInner">Or</span></ion-text>
+        </div>
 
-      <!-- Calling SignIn Api from AuthService -->
-      <div class="formGroup">
-        <input
-          type="button"
-          class="btn btnPrimary"
-          value="Log in"
-          (click)="authService.SignIn(userName.value, userPassword.value)"
-        />
-      </div>
+        <!-- Calling GoogleAuth Api from AuthService -->
 
-      <div class="formGroup">
-        <span class="or"><span class="orInner">Or</span></span>
-      </div>
+        <ion-item>
+          <ion-button
+            color="danger"
+            size="small"
+            (click)="authService.GoogleAuth()"
+          >
+            <i class="fab fa-google-plus-g"></i>
+            Log in with Google
+          </ion-button>
+        </ion-item>
 
-      <!-- Calling GoogleAuth Api from AuthService -->
-      <div class="formGroup">
-        <button
-          type="button"
-          class="btn googleBtn"
-          (click)="authService.GoogleAuth()"
-        >
-          <i class="fab fa-google-plus-g"></i>
-          Log in with Google
-        </button>
-      </div>
+        <ion-item>
+          <ion-button
+            color="medium"
+            size="small"
+            [routerLink]="['/forgot-password']"
+            >Forgot Password?</ion-button
+          >
+        </ion-item>
 
-      <div class="forgotPassword">
-        <span [routerLink]="['/forgot-password']">Forgot Password?</span>
-      </div>
+        <ion-item>
+          <span
+            >Don't have an account?<ion-button
+              size="small"
+              class="redirect"
+              [routerLink]="['/register-user']"
+              color="success"
+            >
+              Sign Up</ion-button
+            >
+          </span>
+        </ion-item>
+      </ion-card-content>
     </ion-column>
-
-    <div class="redirectToLogin">
-      <span
-        >Don't have an account?<span
-          class="redirect"
-          [routerLink]="['/register-user']"
-        >
-          Sign Up</span
-        >
-      </span>
-    </div>
-  </div>
+  </ion-card>
 </ion-grid>

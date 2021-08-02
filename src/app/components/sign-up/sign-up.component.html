@@ -1,71 +1,69 @@
-<ion-grid class="displayTable">
-  <div class="displayTableCell">
-    <ion-column class="authBlock">
-      <h3>Sign Up</h3>
+<ion-grid>
+  <ion-card>
+    <ion-card-header><ion-card-title>Sign Up</ion-card-title></ion-card-header>
+    <ion-column>
+      <ion-card-content class="formGroup">
+        <ion-item>
+          <ion-input
+            type="email"
+            placeholder="Email Address"
+            #userEmail
+            required
+          ></ion-input>
+        </ion-item>
 
-      <div class="formGroup">
-        <input
-          type="email"
-          class="formControl"
-          placeholder="Email Address"
-          #userEmail
-          required
-        />
-      </div>
+        <ion-item>
+          <ion-input
+            type="password"
+            placeholder="Password"
+            #userPwd
+            required
+          ></ion-input>
+        </ion-item>
 
-      <div class="formGroup">
-        <input
-          type="password"
-          class="formControl"
-          placeholder="Password"
-          #userPwd
-          required
-        />
-      </div>
-
-      <div class="formGroup">
-        <input
-          type="button"
-          class="btn btnPrimary"
-          value="Sign Up"
-          (click)="authService.SignUp(userEmail.value, userPwd.value)"
-        />
-      </div>
-
-      <div class="formGroup">
-        <span class="or"><span class="orInner">Or</span></span>
-      </div>
-
-      <!-- Continue with Google -->
-      <div class="formGroup">
-        <button
-          type="button"
-          class="btn googleBtn"
-          (click)="authService.GoogleAuth()"
+        <ion-item
+          ><ion-button
+            type="button"
+            size="small"
+            (click)="authService.SignUp(userEmail.value, userPwd.value)"
+            >Sign Up</ion-button
+          ></ion-item
         >
-          <i class="fab fa-google-plus-g"></i>
-          Continue with Google
-        </button>
-      </div>
 
-      <!-- Continue with Facebook -->
-      <div class="formGroup">
-        <button
-          type="button"
-          class="btn facebookBtn"
-          (click)="authService.FacebookAuth()"
+        <div class="formGroup">
+          <span class="or"><span class="orInner">Or</span></span>
+        </div>
+
+        <!-- Continue with Google -->
+
+        <ion-item>
+          <ion-button
+            size="small"
+            color="danger"
+            type="button"
+            (click)="authService.GoogleAuth()"
+          >
+            Continue with Google
+          </ion-button></ion-item
         >
-          <i class="fab fa-facebook"></i>
-          Continue with Facebook
-        </button>
-      </div>
+
+        <!-- Continue with Facebook -->
+
+        <ion-item
+          ><ion-button
+            type="button"
+            color="tertiary"
+            (click)="authService.FacebookAuth()"
+          >
+            Continue with Facebook
+          </ion-button></ion-item
+        >
+
+        <ion-item>
+          <span>Already have an account?</span>
+          <ion-button class="redirect" routerLink="/sign-in">Log In</ion-button>
+        </ion-item>
+      </ion-card-content>
     </ion-column>
-
-    <div class="redirectToLogin">
-      <span
-        >Already have an account?
-        <span class="redirect" routerLink="/sign-in">Log In</span></span
-      >
-    </div>
-  </div>
+  </ion-card>
 </ion-grid>
